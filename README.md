@@ -1,5 +1,7 @@
 # Presence Studio
 
+> A desktop studio for composing Discord Rich Presence, profile widgets, and personas.
+
 **Discord の Rich Presence・プロフィール Widget・ペルソナを、ひとつの画面で組み立てる Windows デスクトップアプリ。**
 
 [![Latest release](https://img.shields.io/github/v/release/4uthen7/presence-studio?style=flat-square&color=8b7cff)](https://github.com/4uthen7/presence-studio/releases/latest)
