@@ -130,7 +130,7 @@ export function ProfilePreview({
               <div className="grow">
                 <div className="profile-activity-kind">{activity.english.toUpperCase()}</div>
                 <div className="profile-activity-app">
-                  <img src={iconUrl} alt="" />
+                  <img src={settings.previewAppIcon || iconUrl} alt="" />
                   {settings.previewAppName || 'Presence Studio'}
                 </div>
                 <div className="profile-activity-details">{presence.details || 'Details'}</div>

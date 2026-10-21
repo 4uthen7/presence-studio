@@ -9,6 +9,7 @@ import { PersonaEditor } from './components/PersonaEditor'
 import { QuickConnectModal } from './components/QuickConnectModal'
 import { StudioView } from './views/StudioView'
 import { WidgetsView } from './views/WidgetsView'
+import { PresetsView } from './views/PresetsView'
 import { ProfilesView } from './views/ProfilesView'
 import { LibraryView } from './views/LibraryView'
 import { SettingsView } from './views/SettingsView'
@@ -80,7 +81,7 @@ export default function App(): React.JSX.Element {
         document.head.appendChild(style)
       }
       const view = params.get('view')
-      if (view && ['studio', 'widgets', 'profiles', 'library', 'settings'].includes(view)) {
+      if (view && ['studio', 'widgets', 'presets', 'profiles', 'library', 'settings'].includes(view)) {
         setView(view as ViewId)
       }
       if (params.get('palette') === '1') useUiStore.getState().setCommandOpen(true)
@@ -191,9 +192,9 @@ export default function App(): React.JSX.Element {
         void toggleLive()
         return
       }
-      if (/^[1-5]$/.test(event.key)) {
+      if (/^[1-6]$/.test(event.key)) {
         event.preventDefault()
-        const views = ['studio', 'widgets', 'profiles', 'library', 'settings'] as const
+        const views = ['studio', 'widgets', 'presets', 'profiles', 'library', 'settings'] as const
         setView(views[Number(event.key) - 1])
       }
     }
@@ -213,6 +214,7 @@ export default function App(): React.JSX.Element {
           <div className="workspace-scroll">
             {view === 'studio' && <StudioView />}
             {view === 'widgets' && <WidgetsView />}
+            {view === 'presets' && <PresetsView />}
             {view === 'profiles' && <ProfilesView />}
             {view === 'library' && <LibraryView />}
             {view === 'settings' && <SettingsView />}

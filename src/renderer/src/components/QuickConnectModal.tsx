@@ -139,7 +139,9 @@ export function QuickConnectModal(): React.JSX.Element | null {
             id="qc-preview-name"
             className="input"
             value={previewAppName}
-            onChange={(event) => updateSettings({ previewAppName: event.target.value.slice(0, 60) })}
+            onChange={(event) =>
+              updateSettings({ previewAppName: event.target.value.slice(0, 60), previewAppIcon: '' })
+            }
             placeholder="Midnight Drive"
           />
         </Field>

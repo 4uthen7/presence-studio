@@ -389,6 +389,7 @@ export function createSeedState(): AppState {
     settings: {
       appId: '',
       previewAppName: 'Midnight Drive',
+      previewAppIcon: '',
       userId: '',
       redirectUri: 'https://discord.com/',
       autoConnect: true,

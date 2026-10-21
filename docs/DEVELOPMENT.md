@@ -13,9 +13,9 @@ src/
     index.ts            ウィンドウ・トレイ・IPC・自動起動
   preload/              contextBridge API
   renderer/             React + TypeScript + Vite
-    views/              Studio / Widgets / Profiles / Library / Settings
+    views/              Studio / Widgets / Presets / Profiles / Library / Settings
     components/         UI・プレビュー・モーダル
-    lib/                presence builder / widget payload / art / templates
+    lib/                presence builder / widget payload / presets / art / templates
     store/              Zustand ストア
   shared/               メインとレンダラー共通の型
 resources/              アイコン
@@ -98,7 +98,7 @@ Widget のレイアウトは Discord Developer Portal の Widget エディタで
 PATCH https://discord.com/api/v9/applications/{appId}/users/{userId}/identities/0/profile
 Authorization: Bot {botToken}
 Content-Type: application/json
-User-Agent: DiscordBot (https://github.com/4uthen7/presence-studio, 0.1.0)
+User-Agent: DiscordBot (https://github.com/4uthen7/presence-studio, 0.2.0)
 ```
 
 ```json
@@ -182,10 +182,11 @@ npm run preview:web
 
 クエリパラメータ:
 
-- `?view=studio|widgets|profiles|library|settings`
+- `?view=studio|widgets|presets|profiles|library|settings`
 - `?palette=1` コマンドパレットを開く
 - `?publish=1` Publish モーダルを開く
 - `?persona=1` ペルソナエディタを開く
+- `?preset=valorant` プリセットの詳細モーダルを開く
 - `?motion=0` アニメーションを無効化
 
 ブラウザプレビューでは Discord IPC と Widget 公開は動作しません。
@@ -197,6 +198,19 @@ npm run preview:web
 - Discord IPC: 実機の `discord-ipc-0` へ接続し、READY → SET_ACTIVITY → clear を確認
 - 不正な Application ID に対するエラーハンドリングを確認
 - UI: ブラウザプレビューで全画面を確認
+
+## プリセット
+
+`src/renderer/src/lib/presets.ts` にゲーム・開発・音楽アプリの
+`SimulationPreset` を定義しています。
+
+- `presetToPresence()` が `PresenceConfig`（ブロック、パーティ、タイマー、ボタン）へ変換
+- 画像は Discord の Asset Key（`game_icon` など）を指定
+- プレビュー用のアートワークとアプリアイコンは `makeArtwork` / `makeAvatar` で生成
+- アプリ名は `settings.previewAppName` に反映されるが、実際の Discord 表示は
+  Application ID のアプリ情報になる
+
+参考元・制約は [PRESETS.md](PRESETS.md) を参照。
 
 ## ライセンス
 

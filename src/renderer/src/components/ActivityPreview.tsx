@@ -2,8 +2,11 @@ import { useMemo } from 'react'
 import {
   ArrowUpRight,
   Clock3,
+  Gamepad2,
   MoreHorizontal,
   Music2,
+  Trophy,
+  Tv,
   Users
 } from 'lucide-react'
 import type { Persona, PresenceConfig, Settings } from '../../../shared/types'
@@ -19,15 +22,25 @@ export function ActivityPreview({
   persona,
   presence,
   settings,
-  live
+  live,
+  appIcon
 }: {
   persona: Persona
   presence: PresenceConfig
   settings: Settings
   live: boolean
+  appIcon?: string
 }): React.JSX.Element {
   const now = useNow(1000)
   const activity = ACTIVITY_LABELS[presence.activityType]
+  const FallbackIcon =
+    presence.activityType === 'listening'
+      ? Music2
+      : presence.activityType === 'watching'
+        ? Tv
+        : presence.activityType === 'competing'
+          ? Trophy
+          : Gamepad2
   const enabled = (kind: string): boolean =>
     presence.blocks.some((block) => block.kind === kind && block.enabled)
   const hasLarge = enabled('largeImage')
@@ -78,7 +91,7 @@ export function ActivityPreview({
         </div>
 
         <div className="activity-approw">
-          <img src={iconUrl} alt="" className="activity-app-icon" />
+          <img src={appIcon || settings.previewAppIcon || iconUrl} alt="" className="activity-app-icon" />
           <span className="activity-app-name">{settings.previewAppName || 'Your application'}</span>
           <span className="activity-kind">{activity.english.toUpperCase()}</span>
         </div>
@@ -99,7 +112,7 @@ export function ActivityPreview({
                             {presence.smallImage && smallImageRenderable ? (
                               <img src={presence.smallImage} alt="" />
                             ) : (
-                              <Music2 size={13} />
+                              <FallbackIcon size={13} />
                             )}
                           </div>
                         )}
@@ -117,7 +130,7 @@ export function ActivityPreview({
                         {presence.smallImage && smallImageRenderable ? (
                           <img src={presence.smallImage} alt="" />
                         ) : (
-                          <Music2 size={13} />
+                          <FallbackIcon size={13} />
                         )}
                       </span>
                       <span>{presence.smallImageText || 'Small image'}</span>

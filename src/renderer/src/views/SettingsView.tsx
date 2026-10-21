@@ -466,7 +466,7 @@ export function SettingsView(): React.JSX.Element {
                 <div className="panel-title">
                   <Sparkles size={14} /> About
                 </div>
-                <div className="panel-sub">Presence Studio {info?.version ?? '0.1.0'}</div>
+                <div className="panel-sub">Presence Studio {info?.version ?? '0.2.0'}</div>
               </div>
               <span className="pill mono">{info?.platform ?? 'win32'}</span>
             </div>

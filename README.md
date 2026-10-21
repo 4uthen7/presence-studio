@@ -65,6 +65,20 @@ Discord での見え方をその場で確認できます。
 > このアプリは、その Widget に流し込む **データ構造の設計・プレビュー・公開**を担当します。
 > Portal 側の Data Field 名と、アプリ側の Data Field 名を一致させてください。
 
+### Presets / 疑似プレイ
+
+- **VALORANT / League of Legends / CS2 / Apex / Genshin / Minecraft / osu!** などのゲーム
+- **VS Code / IntelliJ IDEA / Unity / Figma / Blender / OBS** などの開発・制作ツール
+- **Spotify / Apple Music / YouTube Music / SoundCloud / Ableton Live** などの音楽アプリ
+- ランク・人数・モード・KDA・マップ・再生中の曲などを、ワンクリックで Presence に展開
+- プリセットごとに **Application ID・Asset Key・ボタン・経過時間**を調整可能
+- 合計23種類のファンメイド・シミュレーション
+
+> プリセットは公開RPC実装のフィールド構造を参考にしたものです。各ゲーム・アプリの公式提供ではありません。
+> また、Discord に表示されるアプリ名・アイコンは **Application ID のアプリ情報**です。
+> 同じ名前の Application を用意すると、より自然に表示できます。
+> 詳しくは [docs/PRESETS.md](docs/PRESETS.md) を参照してください。
+
 ### Profiles / ペルソナ
 
 - 複数のペルソナ（表示名・ハンドル・代名詞・自己紹介・場所・Discord User ID）
@@ -82,8 +96,9 @@ Discord での見え方をその場で確認できます。
 
 - Presence テンプレート 5種（Night Drive / Ranked Climb / Deep Work / Movie Night / Dev Session）
 - Widget ブループリント 4種（Last.fm / GitHub / Valorant / Study）
+- ゲーム・開発・音楽アプリの RPC プリセット 23種
 - Asset Key / 画像URL ライブラリ
-- コマンドパレット（`Ctrl + K`）、`Ctrl + 1..5` で画面移動
+- コマンドパレット（`Ctrl + K`）、`Ctrl + 1..6` で画面移動
 - トースト通知、自動保存、ステータスバー
 - フレームレスのカスタムタイトルバー
 
@@ -92,7 +107,7 @@ Discord での見え方をその場で確認できます。
 ### 1. ダウンロード
 
 [**Latest Release**](https://github.com/4uthen7/presence-studio/releases/latest) から
-`Presence-Studio-0.1.0-win64.zip` をダウンロードしてください。
+`Presence-Studio-0.2.0-win64.zip` をダウンロードしてください。
 
 ZIP を右クリック →「すべて展開」→ フォルダ内の **`Presence Studio.exe`** を実行します。
 インストールは不要です。
@@ -149,17 +164,21 @@ Widget をプロフィールに追加する操作は、Discord 側の実験フ�
 | --- | --- |
 | ![Presence](screenshots/studio.png) | ![Widgets](screenshots/widgets.png) |
 
-| Profiles | Library |
+| Presets | Profiles |
 | --- | --- |
-| ![Profiles](screenshots/profiles.png) | ![Library](screenshots/library.png) |
+| ![Presets](screenshots/presets.png) | ![Profiles](screenshots/profiles.png) |
 
-| Publish | Command palette |
+| Library | Publish |
 | --- | --- |
-| ![Publish](screenshots/publish.png) | ![Command](screenshots/command.png) |
+| ![Library](screenshots/library.png) | ![Publish](screenshots/publish.png) |
 
-| Persona editor | Settings |
+| Command palette | Persona editor |
 | --- | --- |
-| ![Persona editor](screenshots/persona-editor.png) | ![Settings](screenshots/settings.png) |
+| ![Command](screenshots/command.png) | ![Persona editor](screenshots/persona-editor.png) |
+
+| Preset detail | Settings |
+| --- | --- |
+| ![Preset detail](screenshots/preset-valorant.png) | ![Settings](screenshots/settings.png) |
 
 ## よくある質問
 
@@ -187,6 +206,13 @@ Discord アカウントのプロフィールを直接変更する機能はあり
 
 Discord RPC の仕様上、Streaming アクティビティには制限があります。
 本アプリでは **Playing / Listening / Watching / Competing** を提供しています。
+
+### プリセットは本物のゲーム連携？
+
+いいえ。プリセットは公開RPC実装のフィールド構造を参考にした静的なシミュレーションです。
+ゲームの状態を読み取ったり、公式のゲーム連携を偽装したりするものではありません。
+Discord に表示されるアプリ名・アイコンは Application ID のアプリ情報になります。
+詳細は [docs/PRESETS.md](docs/PRESETS.md) を参照してください。
 
 ### Bot Token は安全？
 
@@ -239,6 +265,7 @@ npm run preview:web  # http://127.0.0.1:4173
 
 構成・RPC の実装・Widgets v2 の API 仕様などの技術的な詳細は
 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) を参照してください。
+プリセットの仕組みと参考元は [docs/PRESETS.md](docs/PRESETS.md) にまとめています。
 
 ### 技術スタック
 
@@ -251,6 +278,7 @@ npm run preview:web  # http://127.0.0.1:4173
 ## 制限・注意
 
 - Discord の **Streaming** アクティビティは RPC の仕様上制限があるため未対応です
+- Presets はファンメイドのシミュレーションです。ゲームの内部状態を読み取るものではありません
 - プロフィールの見た目（バナー・バッジ等）はプレビュー用です
 - Widgets v2 は実験的機能です。Discord クライアントのバージョンや実験フラグにより挙動が変わります
 - コード署名を行っていないため、配布時に SmartScreen の警告が出ることがあります

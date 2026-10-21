@@ -376,7 +376,7 @@ function registerIpc(): void {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bot ${token}`,
-          'User-Agent': 'DiscordBot (https://github.com/presence-studio, 0.1.0)'
+          'User-Agent': 'DiscordBot (https://github.com/4uthen7/presence-studio, 0.2.0)'
         },
         body: JSON.stringify(request.payload),
         signal: AbortSignal.timeout(20_000)

@@ -5,6 +5,7 @@ import {
   Blocks,
   Download,
   FolderOpen,
+  Gamepad2,
   LayoutDashboard,
   LibraryBig,
   LogIn,
@@ -142,11 +143,20 @@ export function CommandPalette(): React.JSX.Element | null {
         run: () => setView('widgets')
       },
       {
+        id: 'view-presets',
+        group: '移動',
+        title: 'Presets',
+        hint: 'ゲーム・アプリのRPCプリセット',
+        shortcut: 'Ctrl 3',
+        Icon: Gamepad2,
+        run: () => setView('presets')
+      },
+      {
         id: 'view-profiles',
         group: '移動',
         title: 'Profiles',
         hint: 'ペルソナ管理',
-        shortcut: 'Ctrl 3',
+        shortcut: 'Ctrl 4',
         Icon: Users,
         run: () => setView('profiles')
       },
@@ -155,7 +165,7 @@ export function CommandPalette(): React.JSX.Element | null {
         group: '移動',
         title: 'Library',
         hint: 'テンプレートとアセット',
-        shortcut: 'Ctrl 4',
+        shortcut: 'Ctrl 5',
         Icon: LibraryBig,
         run: () => setView('library')
       },
@@ -164,7 +174,7 @@ export function CommandPalette(): React.JSX.Element | null {
         group: '移動',
         title: 'Settings',
         hint: '接続と外観',
-        shortcut: 'Ctrl 5',
+        shortcut: 'Ctrl 6',
         Icon: Settings2,
         run: () => setView('settings')
       }

@@ -1,4 +1,4 @@
-import { Blocks, LayoutDashboard, LibraryBig, Settings2, Users } from 'lucide-react'
+import { Blocks, Gamepad2, LayoutDashboard, LibraryBig, Settings2, Users } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { ViewId } from '../../../shared/types'
 import { cn } from '../lib/cn'
@@ -9,6 +9,7 @@ import { Avatar } from './ui'
 const NAV: Array<{ id: ViewId; label: string; Icon: LucideIcon }> = [
   { id: 'studio', label: 'Studio', Icon: LayoutDashboard },
   { id: 'widgets', label: 'Widgets', Icon: Blocks },
+  { id: 'presets', label: 'Presets', Icon: Gamepad2 },
   { id: 'profiles', label: 'Profiles', Icon: Users },
   { id: 'library', label: 'Library', Icon: LibraryBig },
   { id: 'settings', label: 'Settings', Icon: Settings2 }

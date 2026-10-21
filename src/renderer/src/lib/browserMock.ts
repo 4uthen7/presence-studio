@@ -73,7 +73,7 @@ export function installBrowserMock(): void {
     },
     system: {
       getInfo: async () => ({
-        version: '0.1.0',
+        version: '0.2.0',
         platform: 'browser-preview',
         dataPath: 'localStorage'
       }),

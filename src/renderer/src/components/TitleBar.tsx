@@ -17,6 +17,7 @@ import { useAppStore } from '../store/appStore'
 
 export function TitleBar(): React.JSX.Element {
   const [maximized, setMaximized] = useState(false)
+  const [version, setVersion] = useState('0.2.0')
   const rpcStatus = useUiStore((state) => state.rpcStatus)
   const setCommandOpen = useUiStore((state) => state.setCommandOpen)
   const setQuickConnectOpen = useUiStore((state) => state.setQuickConnectOpen)
@@ -25,6 +26,7 @@ export function TitleBar(): React.JSX.Element {
 
   useEffect(() => {
     const unsubscribe = window.presenceStudio.window.onMaximizedChange(setMaximized)
+    void window.presenceStudio.system.getInfo().then((info) => setVersion(info.version))
     return unsubscribe
   }, [])
 
@@ -52,7 +54,7 @@ export function TitleBar(): React.JSX.Element {
         <img className="brand-mark" src={iconUrl} alt="" draggable={false} />
         <div className="titlebar-brand-copy">
           <span className="titlebar-brand-name">Presence Studio</span>
-          <span className="titlebar-brand-version">0.1.0</span>
+          <span className="titlebar-brand-version">v{version}</span>
         </div>
       </div>
 

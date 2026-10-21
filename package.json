@@ -1,6 +1,6 @@
 {
   "name": "presence-studio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A desktop studio for composing Discord Rich Presence, profile widgets, and personas.",
   "main": "./out/main/index.js",
   "author": "Presence Studio",

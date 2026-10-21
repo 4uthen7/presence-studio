@@ -1,4 +1,4 @@
-export type ViewId = 'studio' | 'widgets' | 'profiles' | 'library' | 'settings'
+export type ViewId = 'studio' | 'widgets' | 'presets' | 'profiles' | 'library' | 'settings'
 
 export type ActivityType = 'playing' | 'listening' | 'watching' | 'competing'
 
@@ -162,6 +162,7 @@ export interface PublishLogEntry {
 export interface Settings {
   appId: string
   previewAppName: string
+  previewAppIcon: string
   userId: string
   redirectUri: string
   autoConnect: boolean
